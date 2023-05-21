@@ -1,0 +1,7 @@
+import:
+  - ~/.config/alacritty/themes/themes/kanagawa_dragon.yaml
+
+font:
+  normal:
+    family: Hasklug Nerd Font
+  size: 13
