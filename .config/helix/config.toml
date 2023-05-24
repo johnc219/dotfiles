@@ -2,7 +2,8 @@ theme = "kanagawa"
 
 [editor]
 mouse = false
-rulers = [80, 120]
+rulers = [80]
 
 [editor.cursor-shape]
 insert = "bar"
+select = "underline"

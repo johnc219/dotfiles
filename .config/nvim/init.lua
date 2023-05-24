@@ -22,9 +22,9 @@ vim.g.maplocalleader = ' '
 
 vim.opt.number = true
 vim.opt.relativenumber = false
-vim.opt.colorcolumn = "80,120"
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "both"
+vim.opt.cursorlineopt = "number"
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.opt.wrap = false
@@ -35,10 +35,12 @@ vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.shortmess:append({ I = true })
 vim.opt.signcolumn = 'yes'
 vim.opt.completeopt = { 'menuone', 'noselect' }
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set({ 'n', 'v', }, '<Space>', '<Nop>', { silent = true })
@@ -46,6 +48,11 @@ vim.keymap.set('i', '<C-l>', '<Del>', { desc = 'Forward-delete character' })
 vim.keymap.set('', '<leader>y', '"+y', { desc = 'Copy to system clipboard' })
 vim.keymap.set('', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('n', '<leader>\\', '<cmd>let @+ = @%<CR>', { silent = true, desc = 'Copy file path' })
+vim.keymap.set('n', '<leader>w', '<C-w>', {})
+vim.keymap.set('n', 'ge', 'G', {})
+vim.keymap.set('n', 'gl', '$', {})
+vim.keymap.set('n', 'gs', '^', {})
+vim.keymap.set('n', 'gh', '0', {})
 
 -- Strip trailing whitespace on save.
 vim.api.nvim_create_autocmd("BufWritePre", {

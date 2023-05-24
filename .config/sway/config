@@ -253,7 +253,7 @@ gaps outer 0
 # xkb_options is technically not needed.
 
 input 'type:keyboard' {
-    xkb_options ctrl:swap_lalt_lctl,ctrl:swap_ralt_rctl,caps:escape
+    xkb_options caps:escape
 }
 
 # == Custom keybinds ==

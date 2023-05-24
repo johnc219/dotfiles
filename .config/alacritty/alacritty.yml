@@ -1,7 +1,7 @@
 import:
-  - ~/.config/alacritty/themes/themes/kanagawa_dragon.yaml
+  - ~/.config/alacritty/themes/themes/kanagawa_wave.yaml
 
 font:
   normal:
-    family: Hasklug Nerd Font
+    family: Hack
   size: 13

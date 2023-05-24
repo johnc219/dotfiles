@@ -1,5 +1,6 @@
 [[language]]
 name = "ruby"
-# https://github.com/helix-editor/helix/wiki/External-binary-formatter-configuration#standardrb
-formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
+language-server = { command = "standardrb", args = ["--lsp"] }
+# https://github.com/helix-editor/helix/wiki/External-binary-formatter-configuration
+# formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
 auto-format = true

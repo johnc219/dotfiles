@@ -30,7 +30,7 @@ return {
         },
 
         -- endwise
-        endwise = { enable = true },
+        -- endwise = { enable = true },
 
         -- textobjects
         textobjects = {
