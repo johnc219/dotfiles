@@ -1,3 +1,115 @@
+## Set theme variables
+# Default foreground
+set $fujiWhite      #DCD7BA
+
+# Dark foreground (statuslines)
+set $oldWhite 	    #C8C093
+
+# Dark background (statuslines and floating windows)
+set $sumiInk0 	    #16161D
+
+# Default background
+set $sumiInk1 	    #1F1F28
+
+# Lighter background (colorcolumn, folds)
+set $sumiInk2 	    #2A2A37
+
+# Lighter background (cursorline)
+set $sumiInk3 	    #363646
+
+# Darker foreground (line numbers, fold column, non-text characters), float borders
+set $sumiInk4 	    #54546D
+
+# Popup background, visual selection background
+set $waveBlue1 	    #223249
+
+# Popup selection background, search background
+set $waveBlue2 	    #2D4F67
+
+# Diff Add (background)
+set $winterGreen    #2B3328
+
+# Diff Change (background)
+set $winterYellow   #49443C
+
+# Diff Deleted (background)
+set $winterRed 	    #43242B
+
+# Diff Line (background)
+set $winterBlue     #252535
+
+# Git Add
+set $autumnGreen    #76946A
+
+# Git Delete
+set $autumnRed 	    #C34043
+
+# Git Change
+set $autumnYellow   #DCA561
+
+# Diagnostic Error
+set $samuraiRed     #E82424
+
+# Diagnostic Warning
+set $roninYellow    #FF9E3B
+
+# Diagnostic Info
+set $waveAqua1 	    #6A9589
+
+# Diagnostic Hint
+set $dragonBlue     #658594
+
+# Comments
+set $fujiGray 	    #727169
+
+# Light foreground
+set $springViolet1  #938AA9
+
+# Statements and Keywords
+set $oniViolet 	    #957FB8
+
+# Functions and Titles
+set $crystalBlue    #7E9CD8
+
+# Brackets and punctuation
+set $springViolet2  #9CABCA
+
+# Specials and builtin functions
+set $springBlue     #7FB4CA
+
+# Not used
+set $lightBlue 	    #A3D4D5
+
+# Types
+set $waveAqua2 	    #7AA89F
+
+# Strings
+set $springGreen    #98BB6C
+
+# Not used
+set $boatYellow1    #938056
+
+# Operators, RegEx
+set $boatYellow2    #C0A36E
+
+# Identifiers
+set $carpYellow     #E6C384
+
+# Numbers
+set $sakuraPink     #D27E99
+
+# Standout specials 1 (builtin variables)
+set $waveRed 	    #E46876
+
+# Standout specials 2 (exception handling, return)
+set $peachRed 	    #FF5D62
+
+# Constants, imports, booleans
+set $surimiOrange   #FFA066
+
+# Deprecated
+set $katanaGray     #717C7C
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -14,7 +126,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty --command bash
+set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu bemenu-run | xargs swaymsg exec --
@@ -22,7 +134,8 @@ set $menu bemenu-run | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg #000000 solid_color
-output * bg /usr/share/backgrounds/archlinux/gritty.png fill
+#output * bg /usr/share/backgrounds/archlinux/geowaves.png fill
+output * bg ~/backgrounds/red-fuji.jpg fit $waveRed
 #
 # Example configuration:
 #
@@ -30,8 +143,8 @@ output * bg /usr/share/backgrounds/archlinux/gritty.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Place 2nd monitor above primary
-output DP-1 pos 0 0
-output eDP-1 pos 0 1080
+output 'Ancor Communications Inc ASUS VS247 H5LMTF180703' pos 0 0
+output 'Sharp Corporation 0x1484 Unknown' pos 0 1080
 
 ### Idle configuration
 #
@@ -147,7 +260,6 @@ input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+i splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
@@ -217,7 +329,6 @@ bar {
 # Added before include below because sway ships with a drop-in file
 # that helps with this.
 exec export XDG_CURRENT_DESKTOP=sway
-#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 include /etc/sway/config.d/*
 
@@ -228,7 +339,7 @@ xwayland disable
 
 # == Sway UI ==
 
-font Hasklug Nerd Font 11
+font Hack 11
 
 # Remove window titles
 # default_border pixel 3
@@ -238,9 +349,9 @@ smart_borders on
 
 # Customize colors of focused window
 # <border> <background> <text> [<indicator> [<child_border>]]
-client.focused #000000 #000000 #D81860 #2e9ef4 #D81860
-client.unfocused #000000 #000000 #888888 #000000 #222222
-client.focused_inactive #000000 #000000 #D81860 #000000 #222222
+client.focused $sumiInk0 $sumiInk0 $sakuraPink #2e9ef4 $sakuraPink
+client.unfocused $sumiInk0 $sumiInk0 $oldWhite $sumiInk0 $sumiInk0
+client.focused_inactive $sumiInk0 $sumiInk0 $sakuraPink $sumiInk0 $sumiInk0
 
 # Set gaps around windows
 gaps inner 0
@@ -269,5 +380,3 @@ bindsym $mod+c focus child
 
 # Start gammastep (wayland fork of redshift)
 exec gammastep
-
-

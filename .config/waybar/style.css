@@ -2,13 +2,13 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: 'Hasklug Nerd Font', 'Source Code Pro', Arial, sans-serif;
+    font-family: 'Hack', monospace;
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: #3b2e2a;
+    background-color: #16161D;
     border-bottom: 0px solid rgba(100, 114, 125, 0.2);
     color: #ffffff;
     transition-property: background-color;
@@ -28,10 +28,6 @@ window#waybar.solo {
 }
 */
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
 window#waybar.chromium {
     background-color: #000000;
     border: none;
@@ -39,8 +35,8 @@ window#waybar.chromium {
 
 #workspaces button {
     padding: 0 8px;
-    background-color: #241c1a;
-    color: #ffffff;
+    background-color: #16161D;
+    color: #dcd7ba;
     /* border-bottom: 3px solid transparent; */
 }
 
@@ -54,7 +50,7 @@ window#waybar.chromium {
 */
 
 #workspaces button.focused {
-    color: #D81860;
+    color: #D27E99;
     /* background-color: #64727D; */
     /* border-bottom: 3px solid #ffffff; */
 }
@@ -84,7 +80,7 @@ window#waybar.chromium {
 #mpd {
     padding: 0 10px;
     margin: 0 10px;
-    color: #e1e1db;
+    color: #dcd7ba;
 }
 
 #clock {
