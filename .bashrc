@@ -30,15 +30,3 @@ export EDITOR=helix
 
 # Use rbenv for ruby version management
 eval "$(rbenv init -)"
-
-# Run ssh-agent
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent` > /dev/null
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-
-# Add ssh credentials
-ssh-add -l > /dev/null || ssh-add
-
-source /usr/share/nvm/init-nvm.sh
