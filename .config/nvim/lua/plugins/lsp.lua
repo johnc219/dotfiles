@@ -46,8 +46,8 @@ return {
         nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
         nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove')
 
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+        -- Create a command `:fmt` local to the LSP buffer
+        vim.api.nvim_buf_create_user_command(bufnr, 'fmt', function(_)
           vim.lsp.buf.format()
         end, { desc = 'Format current buffer using LSP' })
       end
@@ -76,6 +76,9 @@ return {
               telemetry = {
                 enable = false,
               },
+              semantic = {
+                enable = false
+              }
             },
           },
         },
@@ -91,9 +94,7 @@ return {
             }
           }
         },
-        standardrb = {
-          settings = {}
-        }
+        -- standardrb = {}
       }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast

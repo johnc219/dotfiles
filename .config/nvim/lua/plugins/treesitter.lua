@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
-      { "RRethy/nvim-treesitter-endwise", enabled = true },
+      { "RRethy/nvim-treesitter-endwise" },
       { "nvim-treesitter/nvim-treesitter-textobjects" }
     },
     config = function()
@@ -16,21 +16,22 @@ return {
           'rust',
           'tsx',
           'typescript',
-          'vimdoc'
+          'vimdoc',
+          'yaml'
         },
         highlight = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<C-Space>",
-            node_incremental = "<C-Space>",
-            scope_incremental = "<C-s>",
-            node_decremental = "<M-Space>"
+            init_selection = "<M-o>",
+            node_incremental = "<M-o>",
+            scope_incremental = "<M-s>",
+            node_decremental = "<M-i>"
           }
         },
 
         -- endwise
-        -- endwise = { enable = true },
+        endwise = { enable = true },
 
         -- textobjects
         textobjects = {
@@ -63,19 +64,19 @@ return {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-              ["]m"] = "@function.outer",
+              ["]f"] = "@function.outer",
               ["]]"] = "@class.outer"
             },
             goto_next_end = {
-              ["]M"] = "@function.outer",
+              ["]F"] = "@function.outer",
               ["]["] = "@class.outer"
             },
             goto_previous_start = {
-              ["[m"] = "@function.outer",
+              ["[f"] = "@function.outer",
               ["[["] = "@class.outer"
             },
             goto_previous_end = {
-              ["[M"] = "@function.outer",
+              ["[F"] = "@function.outer",
               ["[]"] = "@class.outer"
             }
           }
