@@ -10,6 +10,9 @@ alias nv='nvim'
 alias hx='helix'
 alias dc='docker compose'
 
+# Add custom bin to path
+export PATH="${PATH}:/home/john/bin"
+
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1368063
 # https://github.com/ammen99/wf-recorder/pull/202
 alias wfr='wf-recorder -g "$(slurp)" -c libvpx'
