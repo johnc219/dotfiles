@@ -4,4 +4,4 @@ name = "ruby"
 # https://github.com/helix-editor/helix/wiki/External-binary-formatter-configuration
 # formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
 formatter = { command = "rubyfmt" }
-auto-format = true
+auto-format = false

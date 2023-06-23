@@ -2,8 +2,14 @@ theme = "kanagawa"
 
 [editor]
 mouse = false
-rulers = [80]
+rulers = [81]
 
 [editor.cursor-shape]
 insert = "bar"
 select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true

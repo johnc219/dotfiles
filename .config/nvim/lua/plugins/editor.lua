@@ -15,15 +15,23 @@ return {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
-    config = function(_, opts)
-      require('telescope').setup(opts)
+    config = function()
+      require('telescope').setup({
+        pickers = {
+          live_grep = {
+            additional_args = { "--hidden" }
+          },
+          grep_string = {
+            additional_args = { "--hidden" }
+          }
+        }
+      })
       -- To get fzf loaded and working with telescope, you need to call
       -- load_extension, somewhere after setup function:
       require('telescope').load_extension('fzf')
 
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-      vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Find [B]uffers' })
+      vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = 'Find [B]uffers' })
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
           winblend = 10,
@@ -33,10 +41,13 @@ return {
 
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand history' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sF', function()
+        builtin.find_files({ hidden = true })
+      end, { desc = '[S]earch [F]iles (hidden true)' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sG', function()
-        builtin.live_grep({ additional_args = { '-w' } })
+        builtin.live_grep({ additional_args = { '-w', '--hidden' } })
       end, { desc = '[S]earch by [G]rep with word boundaries' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -85,7 +96,7 @@ return {
   -- Keymap reminders
   {
     'folke/which-key.nvim',
-    enabled = false,
+    enabled = true,
     config = function()
       vim.opt.timeout = true
       vim.opt.timeoutlen = 500
