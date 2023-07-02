@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# trim whitespace on each line
+sed "s/\s\+$//"
+
+# forward the exit status
+exit_status=$?
+exit $exit_status
