@@ -1,7 +1,27 @@
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+
+[language-server.standardrb]
+command = "standardrb"
+args = ["--lsp"]
+
+[language-server.ruby-syntax-tree]
+command = "stree"
+args = ["lsp"]
+
 [[language]]
 name = "ruby"
-# language-server = { command = "standardrb", args = ["--lsp"] }
+language-servers = [
+  { name = "standardrb", only-features = [ "format", "diagnostics" ] },
+  { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] }
+]
+
 # https://github.com/helix-editor/helix/wiki/External-binary-formatter-configuration
 # formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
-formatter = { command = "rubyfmt" }
-auto-format = false
+# formatter = { command = "rubyfmt" }
+# auto-format = false
+
+# Helix doesn't yet support pullDiagnostics feature
+# ruby-lsp only supports pullDiagnositc
+# https://github.com/helix-editor/helix/issues/7757
+# ruby-lsp
