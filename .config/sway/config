@@ -325,11 +325,6 @@ bar {
 
 # == Environment variables ==
 
-# https://wiki.archlinux.org/title/PipeWire#xdg-desktop-portal-wlr
-# Added before include below because sway ships with a drop-in file
-# that helps with this.
-exec export XDG_CURRENT_DESKTOP=sway
-
 include /etc/sway/config.d/*
 
 # == Additional Personal Customization ==
