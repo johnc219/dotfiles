@@ -339,7 +339,7 @@ bindsym Shift+Print exec ~/bin/grimshot copy area
 
 # == Sway UI ==
 
-font Hack 11
+font JetBrains Mono 10
 
 # Remove window titles
 # default_border pixel 3
