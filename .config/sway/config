@@ -335,7 +335,7 @@ bindsym Print exec ~/bin/grimshot copy active
 bindsym Shift+Print exec ~/bin/grimshot copy area
 
 # Disable xwayland support
-xwayland disable
+#xwayland disable
 
 # == Sway UI ==
 
@@ -364,7 +364,8 @@ gaps outer 0
 # xkb_options is technically not needed.
 
 input 'type:keyboard' {
-    xkb_options caps:escape
+    # unnecessary for programmable keyboards like UHK
+    # xkb_options caps:escape
 }
 
 # == Custom keybinds ==
