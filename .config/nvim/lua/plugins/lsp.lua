@@ -6,7 +6,6 @@ return {
       -- Automatically install LSPs to stdpath for neovim
       {
         'williamboman/mason.nvim',
-        config = true,
         build = ":MasonUpdate" -- :MasonUpdate updates registry contents
       },
       'williamboman/mason-lspconfig.nvim',
@@ -20,6 +19,11 @@ return {
       }
     },
     config = function()
+      -- mason-lspconfig requires that these setup functions are called in this
+      -- order before setting up the servers.
+      require('mason').setup()
+      require('mason-lspconfig').setup()
+
       -- LSP settings.
       -- This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(_, bufnr)
@@ -34,21 +38,26 @@ return {
         nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-        nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-        nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-        nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch document [S]ymbols')
-        nmap('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]earch workspace [Symbols]')
-
-        -- See `:help K` for why this keymap
+        nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+        nmap('gd', require('telescope.builtin').lsp_definitions, '[g]oto [d]efinition')
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
         nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+        nmap('gr', require('telescope.builtin').lsp_references, '[g]oto [r]eferences')
+        nmap('gi', vim.lsp.buf.implementation, '[g]oto [i]mplementation')
+        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+        nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
+        nmap('<leader>dw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
+        nmap('<leader>dh', vim.lsp.buf.document_highlight, '[d]ocument [h]ighlight')
+        nmap('<leader>f', function()
+          vim.lsp.buf.format { async = true }
+        end, '[f]ormat')
 
         -- Lesser used LSP functionality
-        nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-        nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove')
+        -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
+        -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[w]orkspace [r]emove')
+        -- nmap('<leader>wl', function()
+        --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        -- end, '[w]orkspace [l]ist folders')
 
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -86,15 +95,12 @@ return {
             },
           },
         },
-        solargraph = {
+        standardrb = {},
+        ruby_ls = {
           init_options = {
-            formatting = false
-          },
-          settings = {
-            diagnostics = false
+            formatter = "none"
           }
-        },
-        standardrb = {}
+        }
       }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast
@@ -114,7 +120,7 @@ return {
           local lsp_setup = vim.tbl_extend("error", {
             capabilities = capabilities,
             on_attach = on_attach,
-          }, servers[server_name])
+          }, servers[server_name] or {})
 
           require('lspconfig')[server_name].setup(lsp_setup)
         end

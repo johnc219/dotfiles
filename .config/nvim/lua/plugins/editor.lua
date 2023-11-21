@@ -32,6 +32,7 @@ return {
 
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = 'Find [B]uffers' })
+      vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files'})
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
           winblend = 10,
@@ -39,20 +40,19 @@ return {
         }))
       end, { desc = '[/] Fuzzily search in current buffer' })
 
-      vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand history' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[s]earch [d]iagnostics' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[s]earch [f]iles' })
       vim.keymap.set('n', '<leader>sF', function()
         builtin.find_files({ hidden = true })
-      end, { desc = '[S]earch [F]iles (hidden true)' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      end, { desc = '[s]earch [f]iles (hidden true)' })
+      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[s]earch by [g]rep' })
       vim.keymap.set('n', '<leader>sG', function()
         builtin.live_grep({ additional_args = { '-w', '--hidden' } })
-      end, { desc = '[S]earch by [G]rep with word boundaries' })
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = '[S]earch [T]reesitter' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      end, { desc = '[s]earch by [G]rep with word boundaries' })
+      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[s]earch [h]elp' })
+      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[s]earch [k]eymaps' })
+      vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = '[s]earch [t]reesitter' })
+      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[s]earch current [w]ord' })
       vim.keymap.set('n', "<leader>'", builtin.resume, { desc = 'Resume search' })
     end
   },
@@ -68,6 +68,7 @@ return {
   -- File explorer tree
   {
     'nvim-tree/nvim-tree.lua',
+    enabled = false,
     config = function()
       require("nvim-tree").setup({
         renderer = {
@@ -83,7 +84,12 @@ return {
         }
       })
 
-      vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree [E]xplorer' })
+      vim.keymap.set(
+        'n',
+        '<leader>e',
+        '<cmd>NvimTreeToggle<CR>',
+        { desc = 'Toggle file tree [E]xplorer' }
+      )
       vim.keymap.set(
         'n',
         '<leader>E',
@@ -96,7 +102,7 @@ return {
   -- Keymap reminders
   {
     'folke/which-key.nvim',
-    enabled = true,
+    enabled = false,
     config = function()
       vim.opt.timeout = true
       vim.opt.timeoutlen = 500

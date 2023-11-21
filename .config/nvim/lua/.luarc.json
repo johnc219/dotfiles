@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim"
+    ],
+    "workspace.library": [
+        "/home/john/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/5393ac01",
+        "/home/john/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/792633d9"
+    ]
+}
