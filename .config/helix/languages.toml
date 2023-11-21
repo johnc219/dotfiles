@@ -16,12 +16,13 @@ language-servers = [
   { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] }
 ]
 
+# Other possible Ruby formatters:
 # https://github.com/helix-editor/helix/wiki/External-binary-formatter-configuration
 # formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
 # formatter = { command = "rubyfmt" }
+# formatter = { command = "stree format" }
 # auto-format = false
 
 # Helix doesn't yet support pullDiagnostics feature
 # ruby-lsp only supports pullDiagnositc
 # https://github.com/helix-editor/helix/issues/7757
-# ruby-lsp
