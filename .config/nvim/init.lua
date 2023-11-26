@@ -26,11 +26,11 @@ vim.g._johnc219 = {
 }
 
 -- [[ Options ]]
-vim.opt.breakindent = true -- wrapped line will continue visually indented
+vim.opt.breakindent = true                              -- wrapped line will continue visually indented
 vim.opt.colorcolumn = "81"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- using nvim-cmp
 vim.opt.cursorlineopt = "both"
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.expandtab = true -- use spaces to insert a <Tab>
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true

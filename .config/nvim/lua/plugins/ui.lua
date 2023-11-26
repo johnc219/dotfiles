@@ -3,22 +3,35 @@ return {
   {
     "ronisbr/nano-theme.nvim",
     lazy = true,
+    priority = 1000,
     config = function()
       vim.cmd [[colorscheme nano-theme]]
     end
   },
   {
     "loctvl842/monokai-pro.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     config = function()
-      require('monokai-pro').setup {}
+      require('monokai-pro').setup {
+        filter = "octagon",
+        background_clear = {
+          "float_win",
+          "telescope"
+        },
+        override = function (c)
+          return {
+            ["@text.reference"] = { fg = c.base.red },
+            helpHyperTextJump = { fg = c.base.red }
+          }
+        end
+      }
       vim.cmd [[colorscheme monokai-pro]]
     end
   },
   {
     "rebelot/kanagawa.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("kanagawa").setup({
@@ -42,7 +55,7 @@ return {
           icons_enabled = false,
           component_separators = '|',
           section_separators = '',
-          globalstatus = true,
+          globalstatus = false,
         },
         sections = {
           lualine_a = {
