@@ -125,6 +125,18 @@ return {
           require('lspconfig')[server_name].setup(lsp_setup)
         end
       })
+
+      require('lspconfig.ui.windows').default_options.border = vim.g._johnc219.border_style
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, {
+          border = vim.g._johnc219.border_style
+        }
+      )
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, {
+          border = vim.g._johnc219.border_style
+        }
+      )
     end
   }
 }

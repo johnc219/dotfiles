@@ -21,6 +21,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
+vim.g._johnc219 = {
+  border_style = "rounded"
+}
+
 -- [[ Options ]]
 vim.opt.breakindent = true -- wrapped line will continue visually indented
 vim.opt.colorcolumn = "81"
@@ -48,6 +52,11 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 vim.opt.undofile = true -- remember undo history
 vim.opt.wrap = false    -- no line wrapping
+
+-- [[ Config ]]
+vim.diagnostic.config({
+  float = { border = vim.g._johnc219.border_style }
+})
 
 -- [[ Keymaps ]]
 -- General
@@ -149,6 +158,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Setup lazy plugins; no icons
 require("lazy").setup("plugins", {
   ui = {
+    border = vim.g._johnc219.border_style,
     icons = {
       cmd = "[CMD]",
       config = "[CONFIG]",
