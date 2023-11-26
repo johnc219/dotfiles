@@ -47,10 +47,17 @@ return {
         nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
         nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
         nmap('<leader>dw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
-        nmap('<leader>dh', vim.lsp.buf.document_highlight, '[d]ocument [h]ighlight')
-        nmap('<leader>f', function()
-          vim.lsp.buf.format { async = true }
-        end, '[f]ormat')
+
+        local document_highlight = false
+        nmap('<leader>dh', function()
+          if document_highlight then
+            vim.lsp.buf.clear_references()
+          else
+            vim.lsp.buf.document_highlight()
+          end
+
+          document_highlight = not document_highlight
+        end, '[d]ocument [h]ighlight')
 
         -- Lesser used LSP functionality
         -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
