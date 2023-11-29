@@ -1,6 +1,46 @@
 return {
   -- Colorschemes
   {
+    "AlexvZyl/nordic.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function ()
+      vim.cmd [[colorscheme nordic]]
+    end
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function ()
+      vim.cmd [[colorscheme onedarkpro]]
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function ()
+      vim.cmd [[colorscheme tokyonight]]
+    end
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function ()
+      vim.cmd [[colorscheme solarized-osaka]]
+    end
+  },
+  {
+    "rose-pine/neovim",
+    lazy = true,
+    priority = 1000,
+    config = function ()
+      vim.cmd [[colorscheme rose-pine]]
+    end
+  },
+  {
     "ronisbr/nano-theme.nvim",
     lazy = true,
     priority = 1000,
