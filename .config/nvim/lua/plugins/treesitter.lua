@@ -4,7 +4,8 @@ return {
     build = ":TSUpdate",
     dependencies = {
       { "RRethy/nvim-treesitter-endwise" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" }
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      { "nvim-treesitter/nvim-treesitter-context" },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -26,7 +27,7 @@ return {
             init_selection = "<C-space>",
             node_incremental = "<C-space>",
             scope_incremental = "<C-s>",
-            node_decremental = "<M-space>"
+            node_decremental = "<A-space>"
           }
         },
 

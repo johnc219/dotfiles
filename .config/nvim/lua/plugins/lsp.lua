@@ -21,7 +21,11 @@ return {
     config = function()
       -- mason-lspconfig requires that these setup functions are called in this
       -- order before setting up the servers.
-      require('mason').setup()
+      require('mason').setup({
+        ui = {
+          border = vim.g._johnc219.border_style
+        }
+      })
       require('mason-lspconfig').setup()
 
       -- LSP settings.

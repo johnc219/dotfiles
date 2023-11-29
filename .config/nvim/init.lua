@@ -38,7 +38,7 @@ vim.opt.list = true -- show some invisible characters
 -- vim.opt.listchars:append({ leadmultispace = '│ ' })
 vim.opt.number = true
 vim.opt.pumheight = 10 -- maximum number of entries in a popup
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.scrolloff = 5
 vim.opt.shiftwidth = 2
 vim.opt.shortmess:append({ I = true })
@@ -56,6 +56,12 @@ vim.opt.wrap = false    -- no line wrapping
 
 -- [[ Config ]]
 vim.diagnostic.config({
+  underline = {
+    severity = vim.diagnostic.severity.WARN
+  },
+  virtual_text = {
+    severity = vim.diagnostic.severity.WARN
+  },
   float = { border = vim.g._johnc219.border_style }
 })
 
@@ -64,6 +70,7 @@ vim.diagnostic.config({
 vim.keymap.set({ 'n', 'v', }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'gl', '$', { desc = 'Go to end of line' })
 vim.keymap.set({ 'n', 'v' }, 'gs', '^', { desc = 'Go to first non-blank character of line' }) -- I don't use gs to :sleep
+vim.keymap.set('', 'ge', 'G', { desc = 'Go to end of buffer' })
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set('i', '<C-l>', '<del>', { desc = 'forward-delete character' })
 
@@ -102,10 +109,6 @@ vim.keymap.set('i', '<A-k>', ":m '<-2<cr>gv=gv", { desc = "Move line up [visual]
 
 -- Search highlighting
 vim.keymap.set({ 'i', 'n' }, '<Esc>', "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-
--- Scrolling
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 -- [[ Autocommands ]]
 -- Highlight on yank
