@@ -331,8 +331,8 @@ include /etc/sway/config.d/*
 # == Additional Personal Customization ==
 
 # Screenshot helpers
-bindsym Print exec ~/bin/grimshot copy active
-bindsym Shift+Print exec ~/bin/grimshot copy area
+bindsym Print exec ~/bin/grimshot copy area
+bindsym Shift+Print exec ~/bin/grimshot save area - | swappy -f -
 
 # Disable xwayland support
 #xwayland disable
