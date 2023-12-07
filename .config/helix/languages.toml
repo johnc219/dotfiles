@@ -9,11 +9,18 @@ args = ["--lsp"]
 command = "stree"
 args = ["lsp"]
 
+# buffer completion and snippets
+# https://github.com/estin/simple-completion-language-server
+[language-server.scls]
+command = "simple-completion-language-server"
+config = { max_completion_items = 10, snippets_first = true }
+
 [[language]]
 name = "ruby"
 language-servers = [
   { name = "standardrb", only-features = [ "format", "diagnostics" ] },
-  { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] }
+  { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] },
+  "scls"
 ]
 
 # Other possible Ruby formatters:

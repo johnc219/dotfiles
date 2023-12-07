@@ -1,8 +1,8 @@
-theme = "monokai_pro_machine"
+theme = "catppuccin_macchiato"
 
 [editor]
-mouse = false
 rulers = [81]
+cursorline = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -15,9 +15,23 @@ hidden = false
 display-messages = true
 
 [editor.whitespace.render]
-space = "none"
 tab = "all"
 newline = "all"
 
 [editor.indent-guides]
 render = false
+
+[editor.statusline]
+# insert version-control to the default
+left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+[keys.normal]
+# move lines up/down
+"C-k" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+"C-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+# useful when searching by word
+"space" = { "*" = "make_search_word_bounded" }
