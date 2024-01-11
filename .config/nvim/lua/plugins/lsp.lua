@@ -45,15 +45,17 @@ return {
         nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
         nmap('gd', require('telescope.builtin').lsp_definitions, '[g]oto [d]efinition')
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+        nmap('<leader>k', vim.lsp.buf.hover, 'Hover Documentation')
         nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+        nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
         nmap('gr', require('telescope.builtin').lsp_references, '[g]oto [r]eferences')
         nmap('gi', vim.lsp.buf.implementation, '[g]oto [i]mplementation')
-        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-        nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
-        nmap('<leader>dw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
+        -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+        nmap('<leader>s', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
+        nmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
 
         local document_highlight = false
-        nmap('<leader>dh', function()
+        nmap('<leader>h', function()
           if document_highlight then
             vim.lsp.buf.clear_references()
           else

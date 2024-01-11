@@ -72,11 +72,13 @@ vim.keymap.set({ 'n', 'v' }, 'gl', '$', { desc = 'Go to end of line' })
 vim.keymap.set({ 'n', 'v' }, 'gs', '^', { desc = 'Go to first non-blank character of line' }) -- I don't use gs to :sleep
 vim.keymap.set('', 'ge', 'G', { desc = 'Go to end of buffer' })
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
-vim.keymap.set('i', '<C-l>', '<del>', { desc = 'forward-delete character' })
+vim.keymap.set('i', '<C-d>', '<del>', { desc = 'forward-delete character' })
 
 -- Clipboard
-vim.keymap.set('n', '<leader>\\', '<cmd>let @+ = @%<cr>', { silent = true, desc = 'copy file path' })
-vim.keymap.set('', '<leader>y', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('n', '<leader>\\', function()
+  vim.fn.setreg('+', vim.fn.expand('%:~:.'))
+end, { desc = 'Yank relative file path to system clipboard' })
+vim.keymap.set('', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set('', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('', '<leader>P', '"+P', { desc = 'Paste from system clipboard' })
 vim.keymap.set('n', '<leader>w', '<C-w>', { desc = '[W]indow' })
@@ -104,8 +106,8 @@ vim.keymap.set('n', '<A-j>', "<cmd>m .+1<cr>==", { desc = "Move line down [norma
 vim.keymap.set('n', '<A-k>', "<cmd>m .-2<cr>==", { desc = "Move line up [normal]" })
 vim.keymap.set('i', '<A-j>', "<esc><cmd>m .+1<cr>==gi", { desc = "Move line down [insert]" })
 vim.keymap.set('i', '<A-k>', "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up [insert]" })
-vim.keymap.set('i', '<A-j>', ":m '>+1<cr>gv=gv", { desc = "Move line down [visual]" })
-vim.keymap.set('i', '<A-k>', ":m '<-2<cr>gv=gv", { desc = "Move line up [visual]" })
+vim.keymap.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = "Move line down [visual]" })
+vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = "Move line up [visual]" })
 
 -- Search highlighting
 vim.keymap.set({ 'i', 'n' }, '<Esc>', "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })

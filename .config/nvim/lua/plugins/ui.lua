@@ -1,18 +1,33 @@
 return {
   -- Colorschemes
   {
-    "AlexvZyl/nordic.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = true,
     priority = 1000,
-    config = function ()
-      vim.cmd [[colorscheme nordic]]
+    config = function()
+      require("catppuccin").setup({
+        flavour = "frappe",
+        dim_inactive = {
+          enabled = false
+        }
+      })
+      vim.cmd [[colorscheme catppuccin]]
+    end
+  },
+  {
+    "shaunsingh/nord.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function()
+      vim.cmd [[colorscheme nord]]
     end
   },
   {
     "olimorris/onedarkpro.nvim",
     lazy = true,
     priority = 1000,
-    config = function ()
+    config = function()
       vim.cmd [[colorscheme onedarkpro]]
     end
   },
@@ -20,7 +35,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = true,
     priority = 1000,
-    config = function ()
+    config = function()
       vim.cmd [[colorscheme tokyonight]]
     end
   },
@@ -28,7 +43,7 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
-    config = function ()
+    config = function()
       vim.cmd [[colorscheme solarized-osaka]]
     end
   },
@@ -36,7 +51,7 @@ return {
     "rose-pine/neovim",
     lazy = true,
     priority = 1000,
-    config = function ()
+    config = function()
       vim.cmd [[colorscheme rose-pine]]
     end
   },
@@ -50,7 +65,7 @@ return {
   },
   {
     "loctvl842/monokai-pro.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require('monokai-pro').setup {
@@ -59,7 +74,7 @@ return {
           "float_win",
           "telescope"
         },
-        override = function (c)
+        override = function(c)
           return {
             ["@text.reference"] = { fg = c.base.red },
             helpHyperTextJump = { fg = c.base.red }
@@ -71,7 +86,7 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     config = function()
       require("kanagawa").setup({
