@@ -1,8 +1,9 @@
-theme = "catppuccin_macchiato"
+theme = "gruvbox"
 
 [editor]
 rulers = [81]
 cursorline = true
+idle-timeout = 200
 
 [editor.cursor-shape]
 insert = "bar"

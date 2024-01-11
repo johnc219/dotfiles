@@ -17,6 +17,7 @@ config = { max_completion_items = 10, snippets_first = true }
 
 [[language]]
 name = "ruby"
+auto-format = true
 language-servers = [
   { name = "standardrb", only-features = [ "format", "diagnostics" ] },
   { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] },
