@@ -26,23 +26,25 @@ vim.g._johnc219 = {
 }
 
 -- [[ Options ]]
+-- vim.opt.listchars:append({ leadmultispace = '│ ' })
 vim.opt.breakindent = true                              -- wrapped line will continue visually indented
+vim.opt.clipboard = "unnamedplus"                       -- Sync with system clipboard
 vim.opt.colorcolumn = "81"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- using nvim-cmp
-vim.opt.cursorlineopt = "both"
 vim.opt.cursorline = false
+vim.opt.cursorlineopt = "both"
 vim.opt.expandtab = true -- use spaces to insert a <Tab>
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
-vim.opt.list = true -- show some invisible characters
--- vim.opt.listchars:append({ leadmultispace = '│ ' })
+vim.opt.inccommand = "split"
+vim.opt.list = true    -- show some invisible characters
 vim.opt.number = true
 vim.opt.pumheight = 10 -- maximum number of entries in a popup
-vim.opt.relativenumber = false
-vim.opt.scrolloff = 5
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 999
 vim.opt.shiftwidth = 2
-vim.opt.shortmess:append({ I = true })
-vim.opt.showmode = false -- Don't show mode since we have a statusline
+vim.opt.shortmess:append({ I = true }) -- Don't show welcome message
+vim.opt.showmode = false               -- Don't show mode since we have a statusline
 vim.opt.sidescrolloff = 5
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
@@ -51,16 +53,17 @@ vim.opt.softtabstop = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.termguicolors = true
-vim.opt.undofile = true -- remember undo history
-vim.opt.wrap = false    -- no line wrapping
+vim.opt.undofile = false -- remember undo history
+vim.opt.virtualedit = "block"
+vim.opt.wrap = false     -- line wrapping
 
 -- [[ Config ]]
 vim.diagnostic.config({
   underline = {
-    severity = vim.diagnostic.severity.WARN
+    severity = vim.diagnostic.severity.INFO
   },
   virtual_text = {
-    severity = vim.diagnostic.severity.WARN
+    severity = vim.diagnostic.severity.INFO
   },
   float = { border = vim.g._johnc219.border_style }
 })
@@ -68,11 +71,7 @@ vim.diagnostic.config({
 -- [[ Keymaps ]]
 -- General
 vim.keymap.set({ 'n', 'v', }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, 'gl', '$', { desc = 'Go to end of line' })
-vim.keymap.set({ 'n', 'v' }, 'gs', '^', { desc = 'Go to first non-blank character of line' }) -- I don't use gs to :sleep
-vim.keymap.set('', 'ge', 'G', { desc = 'Go to end of buffer' })
-vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
-vim.keymap.set('i', '<C-d>', '<del>', { desc = 'forward-delete character' })
+vim.keymap.set('i', '<C-l>', '<del>', { desc = 'forward-delete character' })
 
 -- Clipboard
 vim.keymap.set('n', '<leader>\\', function()
@@ -90,10 +89,8 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Indentation
-vim.keymap.set('n', '<', '<<')
-vim.keymap.set('n', '>', '>>')
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
+-- vim.keymap.set('v', '<', '<gv')
+-- vim.keymap.set('v', '>', '>gv')
 
 -- Window resizing
 vim.keymap.set('n', '<C-Up>', "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -109,8 +106,8 @@ vim.keymap.set('i', '<A-k>', "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up [
 vim.keymap.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = "Move line down [visual]" })
 vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = "Move line up [visual]" })
 
--- Search highlighting
 vim.keymap.set({ 'i', 'n' }, '<Esc>', "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- Search highlighting
 
 -- [[ Autocommands ]]
 -- Highlight on yank

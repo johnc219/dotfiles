@@ -1,0 +1,12 @@
+import = ["/home/john/.config/alacritty/themes/themes/kanagawa_wave.toml"]
+
+[font]
+size = 13
+
+[font.normal]
+family = "JetBrains Mono"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"

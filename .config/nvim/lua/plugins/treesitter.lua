@@ -20,14 +20,15 @@ return {
           'vimdoc',
           'yaml'
         },
+        auto_install = true,
         highlight = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<A-o>",
-            node_incremental = "<A-o>",
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
             scope_incremental = "<C-s>",
-            node_decremental = "<A-i>"
+            node_decremental = "<A-space>"
           }
         },
 
@@ -66,20 +67,32 @@ return {
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
               ["]f"] = "@function.outer",
+              ["]m"] = "@function.outer",
               ["]]"] = "@class.outer"
             },
             goto_next_end = {
               ["]F"] = "@function.outer",
+              ["]M"] = "@function.outer",
               ["]["] = "@class.outer"
             },
             goto_previous_start = {
               ["[f"] = "@function.outer",
+              ["[m"] = "@function.outer",
               ["[["] = "@class.outer"
             },
             goto_previous_end = {
               ["[F"] = "@function.outer",
+              ["[M"] = "@function.outer",
               ["[]"] = "@class.outer"
             }
+          },
+          lsp_interop = {
+            enable = true,
+            floating_preview_opts = { border = vim.g._johnc219.border_style },
+            peek_definition_code = {
+              ["<leader>tf"] = "@function.outer",
+              ["<leader>tF"] = "@class.outer"
+            },
           }
         }
       })

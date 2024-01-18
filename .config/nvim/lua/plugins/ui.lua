@@ -1,90 +1,6 @@
 return {
   -- Colorschemes
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "frappe",
-        dim_inactive = {
-          enabled = false
-        }
-      })
-      vim.cmd [[colorscheme catppuccin]]
-    end
-  },
-  {
-    "shaunsingh/nord.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme nord]]
-    end
-  },
-  {
-    "olimorris/onedarkpro.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme onedarkpro]]
-    end
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme tokyonight]]
-    end
-  },
-  {
-    "craftzdog/solarized-osaka.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme solarized-osaka]]
-    end
-  },
-  {
-    "rose-pine/neovim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme rose-pine]]
-    end
-  },
-  {
-    "ronisbr/nano-theme.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd [[colorscheme nano-theme]]
-    end
-  },
-  {
-    "loctvl842/monokai-pro.nvim",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require('monokai-pro').setup {
-        filter = "octagon",
-        background_clear = {
-          "float_win",
-          "telescope"
-        },
-        override = function(c)
-          return {
-            ["@text.reference"] = { fg = c.base.red },
-            helpHyperTextJump = { fg = c.base.red }
-          }
-        end
-      }
-      vim.cmd [[colorscheme monokai-pro]]
-    end
-  },
-  {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
@@ -92,6 +8,7 @@ return {
       require("kanagawa").setup({
         theme = "dragon",
         compile = true,
+        dimInactive = true,
         background = {
           dark = "dragon",
           light = "lotus"
@@ -121,29 +38,4 @@ return {
       })
     end
   },
-
-  -- Smooth scrolling
-  {
-    'karb94/neoscroll.nvim',
-    enabled = false,
-    config = function()
-      require('neoscroll').setup()
-    end
-  },
-
-  -- Indentation guides
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    enabled = false,
-    config = function()
-      require('ibl').setup({
-        indent = { char = '│', smart_indent_cap = true }
-      })
-      local hooks = require "ibl.hooks"
-      hooks.register(
-        hooks.type.WHITESPACE,
-        hooks.builtin.hide_first_space_indent_level
-      )
-    end
-  }
 }

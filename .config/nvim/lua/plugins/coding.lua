@@ -79,9 +79,6 @@ return {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered()
         },
-        view = {
-          entries = { name = 'custom', selection_order = 'near_cursor' }
-        },
         formatting = {
           format = function(entry, item)
             item.menu = ({
@@ -103,9 +100,6 @@ return {
         sources = {
           { name = 'buffer' }
         },
-        view = {
-          entries = { name = 'wildmenu' }
-        }
       })
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work)
@@ -116,9 +110,6 @@ return {
         }, {
           { name = 'cmdline' }
         }),
-        view = {
-          entries = { name = 'wildmenu' }
-        }
       })
     end
   }
