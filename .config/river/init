@@ -12,6 +12,7 @@
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot
+riverctl map normal Super P spawn 'bemenu-run --ignorecase --prompt \> -c --fn "JetBrains Mono" --fixed-height -l 10 -W 0.2 -M 10 -B 3 -n'
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -143,20 +144,25 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl background-color 0x212529
+riverctl border-color-focused 0x6c757d
+riverctl border-color-unfocused 0x343a40
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-# Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl rule-add -app-id 'float*' -title 'foo' float
+# Make all views with an app-id that starts with "float" start floating.
+riverctl float-filter-add app-id 'floating*'
 
 # Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
+# riverctl rule-add -app-id "bar" csd
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+
+## Custom
+riverctl map normal Super n spawn 'foot --app-id=floatingfoot'
+riverctl map normal Super Tab focus-previous-tags
+riverctl map normal Super Semicolon toggle-focused-tags $((1 << (8-1)))
