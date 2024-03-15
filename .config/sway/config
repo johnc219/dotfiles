@@ -17,7 +17,7 @@ set $right l
 set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run --ignorecase --prompt \> -c --fn "JetBrains Mono" --fixed-height -l 10 -W 0.2 -M 10 -B 3 -n | xargs swaymsg exec --
+set $menu bemenu-run -b --ignorecase --prompt \> --fn "JetBrains Mono" | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -73,7 +73,7 @@ input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+n exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -222,8 +222,8 @@ include /etc/sway/config.d/*
 # == Additional Personal Customization ==
 
 # Screenshot helpers
-bindsym Print exec ~/bin/grimshot copy area
-bindsym Shift+Print exec ~/bin/grimshot save area - | swappy -f -
+bindsym Print exec /usr/share/sway-contrib/grimshot copy area
+bindsym Shift+Print exec /usr/share/sway-contrib/grimshot save area - | swappy -f -
 
 # Disable xwayland support
 xwayland disable
@@ -268,7 +268,7 @@ client.unfocused        $dim                $dim            $dim_contrast
 
 input 'type:keyboard' {
     # unnecessary for programmable keyboards like UHK
-    # xkb_options caps:escape
+    xkb_options caps:escape
 
     repeat_delay 300
     repeat_rate 50
@@ -281,7 +281,7 @@ bindsym $mod+Shift+semicolon move scratchpad
 bindsym $mod+semicolon scratchpad show
 
 # start a floating tabbed terminal part of the scratchpad
-bindsym $mod+n exec $term --app-id=floating_term
+bindsym $mod+m exec $term --app-id=floating_term
 for_window [app_id="floating_term"] floating enable, splith, layout tabbed, move scratchpad, scratchpad show
 
 # Cycle through workspaces
