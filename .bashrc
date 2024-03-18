@@ -12,20 +12,18 @@ alias ip='ip -color=auto'
 alias nv='nvim'
 alias hx='helix'
 alias dc='docker compose'
-alias n='nnn -aeE'
-
-# Add custom bin to path
-export PATH="${PATH}:/home/john/bin"
+alias n='nnn -aeEA'
+alias uhk='DESKTOPINTEGRATION=no /opt/appimages/UHK.Agent.AppImage --ozone-platform-hint=auto'
 
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1368063
 # https://github.com/ammen99/wf-recorder/pull/202
 alias wfr='wf-recorder -g "$(slurp)" -c libvpx'
 
+# Add custom bin to path
+export PATH="${PATH}:/home/john/bin"
+
 # Customize prompt
 PS1='\[\e[0;35m\][\W]> \[\e[m\]'
-
-# Run Firefox in wayland
-export MOZ_ENABLE_WAYLAND=1
 
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -66,3 +64,5 @@ prompt_marker() {
 }
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }prompt_marker
+
+eval "$(starship init bash)"
