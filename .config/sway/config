@@ -17,11 +17,13 @@ set $right l
 set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run -b --ignorecase --prompt \> --fn "JetBrains Mono" | xargs swaymsg exec --
+# set $menu bemenu-run -b --ignorecase --prompt \> --fn "JetBrains Mono" | xargs swaymsg exec --
+set $menu dmenu_path | wmenu -b -i -f "JetBrains Mono 12" | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-set $bg_color #212529
+# set $bg_color #212529
+set $bg_color #000000
 output * bg $bg_color solid_color
 # output * bg /usr/share/backgrounds/archlinux/geowaves.png fill
 # output * bg ~/backgrounds/red-fuji.jpg fit $waveRed
@@ -79,7 +81,7 @@ input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+p exec $menu
+    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -291,6 +293,11 @@ bindsym $mod+bracketleft workspace prev
 
 # Focus child
 bindsym $mod+c focus child
+
+# Special keys
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 # == Start programs ==
 
