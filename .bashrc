@@ -31,7 +31,8 @@ alias wfr='wf-recorder -g "$(slurp)" -c libvpx'
 export PATH="${PATH}:/home/john/bin"
 
 # Customize prompt
-PS1='\[\e[0;35m\][\W]> \[\e[m\]'
+source /usr/share/git/git-prompt.sh
+PS1='\[\e[0;35m\][\W]$(__git_ps1 " (%s)") > \[\e[m\]'
 
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -72,5 +73,3 @@ prompt_marker() {
 }
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }prompt_marker
-
-eval "$(starship init bash)"
