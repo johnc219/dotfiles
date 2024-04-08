@@ -8,5 +8,5 @@ family = "JetBrains Mono"
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
-key = "Return"
+key = "n"
 mods = "Control|Shift"
