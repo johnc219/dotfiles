@@ -1,19 +1,47 @@
+## Ruby
+
 [language-server.ruby-lsp]
 command = "ruby-lsp"
 
-[language-server.standardrb]
-command = "standardrb"
-args = ["--lsp"]
-
-[language-server.ruby-syntax-tree]
-command = "stree"
-args = ["lsp"]
-
+# Helix doesn't yet support pullDiagnostics feature
+# ruby-lsp only supports pullDiagnositc
+# https://github.com/helix-editor/helix/issues/7757
+#
+# snippets and completions aren't great yet
 # buffer completion and snippets
 # https://github.com/estin/simple-completion-language-server
 [language-server.scls]
 command = "simple-completion-language-server"
 config = { max_completion_items = 10, snippets_first = true }
+
+
+[language-server.standardrb]
+command = "standardrb"
+args = ["--lsp"]
+
+## JavaScript/TypeScript
+
+# Reference:
+# https://github.com/morlinbrot/helix-webdev-config/blob/main/.helix/languages.toml
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+format = { enable = true }
+nodePath = ""
+quiet = false
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+experimental = {}
+problems = { shortenToSingleLine = false }
+
+[language-server.eslint.config.codeAction]
+disableRuleComment = { enable = true, location = "separateLine" }
+showDocumentation = { enable = false }
 
 [[language]]
 name = "ruby"
@@ -29,8 +57,27 @@ language-servers = [
 # formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"] }
 # formatter = { command = "rubyfmt" }
 # formatter = { command = "stree format" }
-# auto-format = false
 
-# Helix doesn't yet support pullDiagnostics feature
-# ruby-lsp only supports pullDiagnositc
-# https://github.com/helix-editor/helix/issues/7757
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true

@@ -1,9 +1,10 @@
-theme = "gruvbox"
+theme = "sonokai"
 
 [editor]
 rulers = [81]
 cursorline = true
-idle-timeout = 200
+line-number = "absolute"
+idle-timeout = 100
 
 [editor.cursor-shape]
 insert = "bar"
@@ -25,9 +26,6 @@ render = false
 [editor.statusline]
 # insert version-control to the default
 left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
-mode.normal = "N"
-mode.insert = "I"
-mode.select = "S"
 
 [keys.normal]
 # move lines up/down
