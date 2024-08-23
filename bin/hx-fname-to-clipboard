@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# helper to copy relative file path to clipboard
+echo "${@#$PWD/}" | wl-copy -n

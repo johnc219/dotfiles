@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Function to convert absolute path to relative path
+to_relative_path() {
+    local abs_path="$1"
+    echo "${abs_path#$PWD/}"
+}
+
+# Check if at least one argument is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <absolute_file_path> [<line_number_start> [<line_number_end>]]"
+    exit 1
+fi
+
+# Get the file path and convert it to relative path
+file_path=$(to_relative_path "$1")
+
+# Initialize variables for line numbers
+line_start=""
+line_end=""
+
+# Check if line number start is provided
+if [ $# -ge 2 ]; then
+    line_start=":$2"
+fi
+
+# Check if line number end is provided
+if [ $# -ge 3 ]; then
+    line_end="-$3"
+fi
+
+# Generate GitHub URL
+url=$(gh browse --no-browser "${file_path}${line_start}${line_end}" --commit)
+
+# Copy URL to clipboard
+echo -n "$url" | wl-copy
+
+# Optional:
+# echo "GitHub URL copied to clipboard: $url"
