@@ -5,12 +5,19 @@ return {
     dependencies = {
       { "RRethy/nvim-treesitter-endwise" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
-      { "nvim-treesitter/nvim-treesitter-context" },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+          require("treesitter-context").setup({ enable = true })
+          vim.keymap.set('', '<leader>tc', require("treesitter-context").toggle, { desc = "toggle TS context" })
+        end
+      },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
         -- core
         ensure_installed = {
+          'gitcommit',
           'javascript',
           'lua',
           'ruby',
@@ -25,10 +32,10 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<c-space>",
-            node_incremental = "<c-space>",
+            init_selection = "<C-space>",
+            node_incremental = "<C-space>",
             scope_incremental = "<C-s>",
-            node_decremental = "<A-space>"
+            node_decremental = "<C-bs>"
           }
         },
 
@@ -67,22 +74,18 @@ return {
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
               ["]f"] = "@function.outer",
-              ["]m"] = "@function.outer",
               ["]]"] = "@class.outer"
             },
             goto_next_end = {
               ["]F"] = "@function.outer",
-              ["]M"] = "@function.outer",
               ["]["] = "@class.outer"
             },
             goto_previous_start = {
               ["[f"] = "@function.outer",
-              ["[m"] = "@function.outer",
               ["[["] = "@class.outer"
             },
             goto_previous_end = {
               ["[F"] = "@function.outer",
-              ["[M"] = "@function.outer",
               ["[]"] = "@class.outer"
             }
           },
@@ -90,8 +93,8 @@ return {
             enable = true,
             floating_preview_opts = { border = vim.g._johnc219.border_style },
             peek_definition_code = {
-              ["<leader>tf"] = "@function.outer",
-              ["<leader>tF"] = "@class.outer"
+              ["<leader>pf"] = "@function.outer",
+              ["<leader>pc"] = "@class.outer"
             },
           }
         }
