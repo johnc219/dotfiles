@@ -12,12 +12,15 @@ command = "ruby-lsp"
 # https://github.com/estin/simple-completion-language-server
 [language-server.scls]
 command = "simple-completion-language-server"
-config = { max_completion_items = 10, snippets_first = true }
 
+[language-server.scls.config]
+max_completion_items = 5
+feature_snippets = false
+snippets_first = false
 
 [language-server.standardrb]
-command = "standardrb"
-args = ["--lsp"]
+command = "bundle"
+args = ["exec", "standardrb", "--lsp"]
 
 ## JavaScript/TypeScript
 
@@ -49,7 +52,7 @@ auto-format = true
 language-servers = [
   { name = "standardrb", only-features = [ "format", "diagnostics" ] },
   { name = "ruby-lsp", except-features = [ "format", "diagnostics" ] },
-  "scls"
+  "scls",
 ]
 
 # Other possible Ruby formatters:

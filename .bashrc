@@ -20,12 +20,13 @@ alias ip='ip -color=auto'
 alias nv='nvim'
 alias hx='helix'
 alias dc='docker compose'
-alias n='nnn -aeEA'
 alias uhk='DESKTOPINTEGRATION=no /opt/appimages/UHK.Agent.AppImage --ozone-platform-hint=auto'
+# alias slack='slack --enable-features=WaylandWindowDecorations,WebRTCPipeWireCapturer --ozone-platform-hint=auto'
 
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1368063
 # https://github.com/ammen99/wf-recorder/pull/202
-alias wfr='wf-recorder -g "$(slurp)" -c libvpx'
+alias wfr='wf-recorder -g "$(slurp)" -c libvpx-vp9'
+alias wfra='wf-recorder -g "$(slurp)" -c libvpx-vp9 -C libvorbis --audio=alsa_input.pci-0000_00_1f.3.analog-stereo'
 
 # Add custom bin to path
 export PATH="${PATH}:/home/john/bin"
@@ -39,15 +40,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 # Set default editor
 export EDITOR=helix
 
-# nnn config
-export NNN_PLUG='f:fzcd;c:!echo "$PWD/$nnn" | wl-copy -n*'
-
 # Use rbenv for ruby version management
 eval "$(rbenv init -)"
-
-# Set up volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Use bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"

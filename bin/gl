@@ -36,4 +36,4 @@ url=$(gh browse --no-browser "${file_path}${line_start}${line_end}" --commit)
 echo -n "$url" | wl-copy
 
 # Optional:
-# echo "GitHub URL copied to clipboard: $url"
+echo "GitHub URL copied to clipboard: $url"

@@ -1,10 +1,23 @@
-theme = "sonokai"
+theme = "tokyonight_moon"
 
 [editor]
-rulers = [81]
 cursorline = true
 line-number = "absolute"
-idle-timeout = 100
+auto-format = false
+completion-timeout = 5
+preview-completion-insert = true
+rulers = [81, 121]
+bufferline = "never"
+# popup-border = "all"
+jump-label-alphabet = "asdfjklghweio"
+
+[editor.statusline]
+# insert version-control to the default
+left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["diagnostics", "selections", "register", "position", "position-percentage", "file-encoding"]
+
+[editor.lsp]
+display-messages = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,19 +26,15 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.lsp]
-display-messages = true
+[editor.search]
+wrap-around = false
 
 [editor.whitespace.render]
 tab = "all"
 newline = "all"
 
 [editor.indent-guides]
-render = false
-
-[editor.statusline]
-# insert version-control to the default
-left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
+render = true
 
 [keys.normal]
 # move lines up/down
@@ -33,4 +42,12 @@ left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator"
 "C-j" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 
 # useful when searching by word
-"space" = { "*" = "make_search_word_bounded" }
+space.i = "make_search_word_bounded"
+space.space = "buffer_picker"
+space.";"= ":format"
+space.l = "@miw*<space>/<ret><space>%p<space>" # search current word
+space."\\" = "@:sh echo -n \"<C-r>%\" | wl-copy<ret>" # copy path to system clip
+
+[keys.normal.space.v]
+b = "@:sh gh browse <C-r>%<ret>"
+u = "@:sh gl <C-r>% "
